@@ -15,9 +15,12 @@ padding: 4px;
    
    outline: none;
 }
+.contactForm label {
+ margin-top: 10px;
+}
 .contactForm button {
   width: 100px;
-  margin-top: 30px;
+  margin-top: 10px;
   padding: 6px;
   background-color: rgba(111, 82, 139, 0.712);
   border:0;

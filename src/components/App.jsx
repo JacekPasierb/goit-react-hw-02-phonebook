@@ -7,13 +7,15 @@ export class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
-  addContact = (name, id) => {
+  addContact = ( id, name, number) => {
     // const { contacts } = this.state;
-    const newContact = { name, id };
+    const newContact = { id , name, number};
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
       name: '',
+      number: '',
     }));
   };
 
