@@ -12,12 +12,11 @@ export class ContactForm extends Component {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
     const id = nanoid();
-    this.props.addContact( id, name, number);
+    this.props.addContact(id, name, number);
 
     form.reset();
   };
-  
-  
+
   render() {
     return (
       <form onSubmit={this.handleSubmit} className={css.contactForm}>

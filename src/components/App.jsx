@@ -42,7 +42,7 @@ export class App extends Component {
         />
         <h2>Contacts</h2>
         <Filter changeFilter={this.changeFilter} />
-        <ContactList contacts={contacts} filter={filter.toLowerCase} />
+        <ContactList contacts={contacts} filter={filter.toLowerCase()} />
       </div>
     );
   }

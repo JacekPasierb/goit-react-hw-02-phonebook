@@ -10,12 +10,10 @@ export default class ContactList extends Component {
   render() {
     const contacts = this.props.contacts;
     const filter = this.props.filter;
-  
- 
-    
+
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
-);
+    );
     return (
       <>
         <ul>
