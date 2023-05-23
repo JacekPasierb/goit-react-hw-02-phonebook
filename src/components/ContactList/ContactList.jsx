@@ -9,11 +9,17 @@ export default class ContactList extends Component {
   }
   render() {
     const contacts = this.props.contacts;
-
+    const filter = this.props.filter;
+  
+ 
+    
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter)
+);
     return (
       <>
         <ul>
-          {contacts.map(contact => (
+          {filteredContacts.map(contact => (
             <li className={css.contactItem} key={contact.id}>
               {contact.name}: {this.formatPhoneNumber(contact.number)}
             </li>
