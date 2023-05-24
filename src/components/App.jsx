@@ -10,7 +10,14 @@ export class App extends Component {
     filter: '',
   };
   addContact = (id, name, number) => {
-    // const { contacts } = this.state;
+    const { contacts } = this.state;
+
+    const isName = contacts.some(contact => contact.name === name);
+    if (isName) {
+      alert('Kontakt o tej nazwie już istnieje!');
+      return;
+    }
+
     const newContact = { id, name, number };
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
@@ -21,7 +28,6 @@ export class App extends Component {
   changeNumber = e => this.setState({ number: e.target.value });
   changeFilter = e => this.setState({ filter: e.target.value });
   render() {
-    console.log(this.state);
     const { contacts, filter } = this.state;
     return (
       <div className={css.container}>
