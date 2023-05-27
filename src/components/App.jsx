@@ -9,6 +9,7 @@ export class App extends Component {
     contacts: [],
     filter: '',
   };
+
   addContact = (id, name, number) => {
     const { contacts } = this.state;
 
@@ -23,6 +24,16 @@ export class App extends Component {
       contacts: [...prevState.contacts, newContact],
       filter: '',
     }));
+  };
+  deleteContact = id => {
+    const { contacts } = this.state;
+
+    const actualContacts = contacts.filter(contact => contact.id !== id);
+
+    this.setState({
+      contacts: actualContacts,
+      filter: '',
+    });
   };
   changeName = e => this.setState({ name: e.target.value });
   changeNumber = e => this.setState({ number: e.target.value });
@@ -39,7 +50,11 @@ export class App extends Component {
         />
         <h2>Contacts</h2>
         <Filter changeFilter={this.changeFilter} />
-        <ContactList contacts={contacts} filter={filter.toLowerCase()} />
+        <ContactList
+          contacts={contacts}
+          filter={filter.toLowerCase()}
+          deleteContact={this.deleteContact}
+        />
       </div>
     );
   }

@@ -8,7 +8,7 @@ export default class ContactList extends Component {
     )} ${phoneNumber.slice(6)}`;
   }
   render() {
-    const { contacts, filter } = this.props;
+    const { contacts, filter, deleteContact } = this.props;
 
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
@@ -19,7 +19,9 @@ export default class ContactList extends Component {
           {filteredContacts.map(contact => (
             <li className={css.contactItem} key={contact.id}>
               {contact.name}: {this.formatPhoneNumber(contact.number)}
-              <button type='submit' onClick={()=>console.log("deleted", contact.id)}>Delete</button>
+              <button type="submit" onClick={() => deleteContact(contact.id)}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>
