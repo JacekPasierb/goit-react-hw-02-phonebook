@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import css from './ContactListStyle.module.css';
+import PropTypes from 'prop-types';
+
 export default class ContactList extends Component {
   formatPhoneNumber(phoneNumber) {
     return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(
@@ -29,3 +31,15 @@ export default class ContactList extends Component {
     );
   }
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  filter: PropTypes.string.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};
