@@ -35,20 +35,17 @@ export class App extends Component {
       filter: '',
     });
   };
-  changeName = e => this.setState({ name: e.target.value });
-  changeNumber = e => this.setState({ number: e.target.value });
+
   changeFilter = e => this.setState({ filter: e.target.value });
+
   render() {
     const { contacts, filter } = this.state;
     return (
       <div className={css.container}>
         <h1>Phonebook</h1>
-        <ContactForm
-          addContact={this.addContact}
-          changeName={this.changeName}
-          changeNumber={this.changeNumber}
-        />
+        <ContactForm addContact={this.addContact} />
         <h2>Contacts</h2>
+
         <Filter changeFilter={this.changeFilter} />
         <ContactList
           contacts={contacts}

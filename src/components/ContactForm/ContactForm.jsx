@@ -3,17 +3,22 @@ import css from './ContactFormStyle.module.css';
 import { nanoid } from 'nanoid';
 
 export class ContactForm extends Component {
+  state = {
+    name: '',
+    number: '',
+  };
+  changeName = e => this.setState({ name: e.target.value });
+  changeNumber = e => this.setState({ number: e.target.value });
+
   handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
 
-    const name = form.elements.name.value;
-    const number = form.elements.number.value;
+    const name = this.state.name;
+    const number = this.state.number;
     const id = nanoid();
 
     this.props.addContact(id, name, number);
-
-    form.reset();
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -28,7 +33,8 @@ export class ContactForm extends Component {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
-            onChange={this.props.changeName}
+            onChange={this.changeName}
+            value={this.state.name}
           />
         </label>
         <label>
@@ -40,7 +46,8 @@ export class ContactForm extends Component {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            onChange={this.props.changeNumber}
+            onChange={this.changeNumber}
+            value={this.state.number}
           />
         </label>
         <button type="submit">Add contact</button>

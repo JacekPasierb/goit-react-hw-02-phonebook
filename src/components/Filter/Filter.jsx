@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import React, { Component } from 'react';
-import css from './FilterStyle.module.css'
+import css from './FilterStyle.module.css';
 
 export class Filter extends Component {
   filterInputId = nanoid();
